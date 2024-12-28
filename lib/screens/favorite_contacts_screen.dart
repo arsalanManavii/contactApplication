@@ -37,10 +37,27 @@ class FavoriteContactsScreen extends StatelessWidget {
                           onPressed: () {
                             value.updateFavoriteContact(
                                 value.favoriteContactList[index]);
+                            value.favoriteContacts();
                           },
                           icon: value.favoriteContactList[index].isLiked == 1
-                              ? const Icon(Icons.favorite, color: Colors.red)
-                              : const Icon(Icons.favorite_border),
+                              ? Theme(
+                                  data: Preferences.isDarkTheme
+                                      ? Theme.of(context).copyWith(
+                                          iconTheme: Theme.of(context)
+                                              .iconTheme
+                                              .copyWith(color: Colors.purple),
+                                        )
+                                      : Theme.of(context).copyWith(
+                                          iconTheme: Theme.of(context)
+                                              .iconTheme
+                                              .copyWith(color: Colors.red),
+                                        ),
+                                  child: const Icon(Icons.favorite),
+                                )
+                              : Icon(
+                                  Icons.favorite_border,
+                                  color: Theme.of(context).iconTheme.color,
+                                ),
                         ),
                       ),
                       Divider(
@@ -66,7 +83,9 @@ class FavoriteContactsScreen extends StatelessWidget {
                         color: Theme.of(context).iconTheme.color),
                     trailing: IconButton(
                       onPressed: () {
-                        value.updateFavoriteContact(value.favoriteContactList[index]);
+                        value.updateFavoriteContact(
+                            value.favoriteContactList[index]);
+                        value.favoriteContacts();
                       },
                       icon: value.favoriteContactList[index].isLiked == 1
                           ? Theme(

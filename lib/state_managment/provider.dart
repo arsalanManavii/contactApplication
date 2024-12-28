@@ -90,17 +90,3 @@ class ContactProvider extends ChangeNotifier {
   List<Contact> get contactList => _contactList;
   List<Contact> get favoriteContactList => _favoriteContacts;
 }
-
-class FabStateProvider extends ChangeNotifier {
-  bool isFABVisible = true;
-  void changeVisibility(UserScrollNotification notification) {
-    if (notification.direction == ScrollDirection.forward) {
-      isFABVisible = true;
-      notifyListeners();
-    }
-    if (notification.direction == ScrollDirection.reverse) {
-      isFABVisible = false;
-      notifyListeners();
-    }
-  }
-}

@@ -33,7 +33,6 @@ class Application extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           home: MultiProvider(
             providers: [
-              ChangeNotifierProvider(create: (context) => FabStateProvider()),
               ChangeNotifierProvider(create: (context) => ContactProvider()),
             ],
             child: const HomeScreen(),
